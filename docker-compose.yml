@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: whiteboard-database
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - db
+    volumes:
+      - db:/data/postgres
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
