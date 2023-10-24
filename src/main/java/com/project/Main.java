@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
     }
 
     @Bean
-    CommandLineRunner runner(UserRepository userRepository){
+    CommandLineRunner runner(UserRepository userRepository, PasswordEncoder passwordEncoder){
         return args -> {
             Faker faker = new Faker();
             String name = faker.name().fullName();
@@ -28,7 +29,7 @@ public class Main {
                     company,
                     phone,
                     locations,
-                    "password"
+                    passwordEncoder.encode(faker.locality().displayName())
                     );
 
             userRepository.save(u1);

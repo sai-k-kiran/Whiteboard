@@ -4,6 +4,7 @@ import com.project.Exception.DuplicateResource;
 import com.project.Exception.ResourceNotFound;
 import com.project.Exception.ResourceValidationException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +14,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService{
     private final UserDAO userDAO;
     private final UserDTOMapper userDTOMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(@Qualifier("jdbc") UserDAO userDAO, UserDTOMapper userDTOMapper) {
+    public UserServiceImpl(@Qualifier("jdbc") UserDAO userDAO,
+                           UserDTOMapper userDTOMapper, PasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.userDTOMapper = userDTOMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -46,8 +50,8 @@ public class UserServiceImpl implements UserService{
                 request.companyName(),
                 request.phoneNum(),
                 request.location(),
-                request.password()
-        ));
+                passwordEncoder.encode(request.password()))
+        );
     }
 
     @Override

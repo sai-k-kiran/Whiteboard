@@ -34,6 +34,16 @@ public class UserJDBCAccessService implements UserDAO {
                 .stream()
                 .findFirst();
     }
+    @Override
+    public Optional<User> selectUserByEmail(String email) {
+        var sql = """
+                Select id, name, email, company_name, phone_num, location, password from users where email = ?;
+                """;
+
+        return jdbcTemplate.query(sql, userRowMapper, email)
+                .stream()
+                .findFirst();
+    }
 
     @Override
     public void registerUser(User request){
@@ -108,13 +118,5 @@ public class UserJDBCAccessService implements UserDAO {
         String sql = "Select count(id) from users where id = ?";
         Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id);
         return (count != null && count > 0);
-    }
-
-    @Override
-    public Optional<User> selectUserByEmail(String email) {
-        String sql = "SELECT id, name, email, company_name, phone_num, location FROM users WHERE email = ?";
-        return jdbcTemplate.query(sql, userRowMapper, email)
-                .stream()
-                .findFirst();
     }
 }

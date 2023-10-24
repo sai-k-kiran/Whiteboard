@@ -9,7 +9,7 @@ public record UserDTO(
         String companyName,
         String phoneNum,
         String location
-//        List<String> roles,
+//        List<String> roles
 //        String username
 ) {
 }
