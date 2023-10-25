@@ -8,8 +8,8 @@ public record UserDTO(
         String email,
         String companyName,
         String phoneNum,
-        String location
-//        List<String> roles
-//        String username
+        String location,
+        List<String> roles,
+        String username
 ) {
 }

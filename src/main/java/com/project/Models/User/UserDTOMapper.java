@@ -15,11 +15,11 @@ public class UserDTOMapper implements Function<User, UserDTO> {
                 user.getEmail(),
                 user.getCompanyName(),
                 user.getPhoneNum(),
-                user.getLocation()
-//                user.getAuthorities().stream().
-//                        map(r -> r.getAuthority())
-//                        .collect(Collectors.toList())
-//                user.getUsername()
+                user.getLocation(),
+                user.getAuthorities().stream().
+                        map(r -> r.getAuthority())
+                        .collect(Collectors.toList()),
+                user.getUsername()
         );
     }
 }
