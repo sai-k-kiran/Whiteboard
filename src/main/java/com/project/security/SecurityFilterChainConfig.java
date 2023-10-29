@@ -37,7 +37,8 @@ public class SecurityFilterChainConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                        .requestMatchers(HttpMethod.POST, "api/v1/auth/**")
+                        .requestMatchers(HttpMethod.POST, "api/v1/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/v1/designs")
                         .permitAll().anyRequest().authenticated()
                 );
 

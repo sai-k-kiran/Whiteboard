@@ -31,7 +31,6 @@ public class User implements UserDetails {
     @Column(name = "phone_num")
     private String phoneNum;
 
-
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -41,7 +40,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Design> designs;
 
     public User() {}
