@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository("design-jdbc")
 public class DesignJDBCAccessService implements DesignDAO{
@@ -18,29 +17,17 @@ public class DesignJDBCAccessService implements DesignDAO{
     }
 
     @Override
-    public List<Design> selectAllDesigns(){
-        var sql = """
-                Select design_id, design, user_id from designs;
-                """;
+    public List<Design> selectDesignsOfUser(Integer id){
+        String sql = "SELECT design FROM designs WHERE userId = ?";
 
-        return jdbcTemplate.query(sql, rowMapper);
-    }
-
-    @Override
-    public Optional<Design> selectDesignById(Integer id){
-        var sql = """
-                 Select design_id, design, user_id from designs where id = ?;
-                 """;
-        return jdbcTemplate.query(sql, rowMapper, id)
-                .stream()
-                .findFirst();
+        return jdbcTemplate.query(sql, rowMapper, id);
     }
 
     @Override
     public void addDesign(Design request){
         String sql = "INSERT INTO designs(design, user_id) VALUES(?, ?)";
 
-        User user = request.getUser_id();
+        User user = request.getUserId();
         System.out.println(user.getId()+ " " + user.getName());
 
         jdbcTemplate.update(sql,
@@ -50,7 +37,7 @@ public class DesignJDBCAccessService implements DesignDAO{
 
     @Override
     public void deleteDesign(Integer design_id){
-        String sql = "DELETE FROM designs where design_id = ?";
+        String sql = "DELETE FROM designs where designId = ?";
 
         jdbcTemplate.update(sql, design_id);
     }

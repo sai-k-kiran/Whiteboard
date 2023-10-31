@@ -25,10 +25,10 @@ public class User implements UserDetails {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "company_name")
+    @Column(name = "companyName")
     private String companyName;
 
-    @Column(name = "phone_num")
+    @Column(name = "phoneNum")
     private String phoneNum;
 
     @Column(name = "email", nullable = false)
@@ -40,7 +40,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Design> designs;
 
     public User() {}

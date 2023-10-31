@@ -119,4 +119,5 @@ public class UserJDBCAccessService implements UserDAO {
         Integer count = jdbcTemplate.queryForObject(sql, Integer.class, id);
         return (count != null && count > 0);
     }
+
 }

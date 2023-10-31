@@ -1,5 +1,7 @@
 package com.project.Models.User;
 
+import com.project.Models.Design.Design;
+
 import java.util.List;
 import java.util.Optional;
 

@@ -11,34 +11,34 @@ import java.util.Objects;
 public class Design {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer design_id;
+    private Integer designId;
 
     @Column(name = "design", columnDefinition="text", length=10485760)
     private String design;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user_id;
+    @JoinColumn(name = "userId")
+    private User userId;
 
     public Design(){}
 
-    public Design(String design, User user_id) {
+    public Design(String design, User userId) {
         this.design = design;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
-    public Design(Integer design_id, String design, User user_id) {
-        this.design_id = design_id;
+    public Design(Integer design_id, String design, User userId) {
+        this.designId = design_id;
         this.design = design;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
-    public Integer getDesign_id() {
-        return design_id;
+    public Integer getDesignId() {
+        return designId;
     }
 
     public void setDesign_id(Integer design_id) {
-        this.design_id = design_id;
+        this.designId = designId;
     }
 
     public String getDesign() {
@@ -49,12 +49,12 @@ public class Design {
         this.design = design;
     }
 
-    public User getUser_id() {
-        return user_id;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -62,11 +62,11 @@ public class Design {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Design design1 = (Design) o;
-        return Objects.equals(design_id, design1.design_id) && Objects.equals(design, design1.design) && Objects.equals(user_id, design1.user_id);
+        return Objects.equals(designId, design1.designId) && Objects.equals(design, design1.design) && Objects.equals(userId, design1.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(design_id, design, user_id);
+        return Objects.hash(designId, design, userId);
     }
 }

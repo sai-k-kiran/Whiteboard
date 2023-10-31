@@ -12,9 +12,9 @@ public class DesignRowMapper implements RowMapper<Design> {
     @Override
     public Design mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Design(
-                rs.getInt("design_id"),
+                rs.getInt("designId"),
                 rs.getString("design"),
-                rs.getObject("user_id", User.class)
+                rs.getObject("userId", User.class)
         );
     }
 }

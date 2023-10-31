@@ -1,6 +1,7 @@
 package com.project.Models.Design;
 
 import com.project.Exception.ResourceNotFound;
+import com.project.Models.User.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +19,11 @@ public class DesignServiceImpl implements DesignService{
     }
 
     @Override
-    public List<DesignDTO> getAllDesigns(){
-        return designDAO.selectAllDesigns()
+    public List<DesignDTO> getAllDesigns(Integer id){
+        return designDAO.selectDesignsOfUser(id)
                 .stream()
                 .map(dtoMapper)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public DesignDTO getDesignById(Integer id){
-        return designDAO.selectDesignById(id)
-                .map(dtoMapper)
-                .orElseThrow(() -> new ResourceNotFound("Design with %s not found".formatted(id)));
     }
 
     @Override
