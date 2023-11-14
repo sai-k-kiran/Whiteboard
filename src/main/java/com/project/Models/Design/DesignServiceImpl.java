@@ -20,6 +20,7 @@ public class DesignServiceImpl implements DesignService{
 
     @Override
     public List<DesignDTO> getAllDesigns(Integer id){
+
         return designDAO.selectDesignsOfUser(id)
                 .stream()
                 .map(dtoMapper)
@@ -35,5 +36,6 @@ public class DesignServiceImpl implements DesignService{
     public void removeDesign(Integer id){
         designDAO.deleteDesign(id);
     }
+
 
 }

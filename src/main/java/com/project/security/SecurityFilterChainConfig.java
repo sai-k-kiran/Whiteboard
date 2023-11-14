@@ -39,6 +39,8 @@ public class SecurityFilterChainConfig {
                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/v1/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/v1/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/v1/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "api/v1/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "api/v1/editor")
                         .permitAll().anyRequest().authenticated()
                 );

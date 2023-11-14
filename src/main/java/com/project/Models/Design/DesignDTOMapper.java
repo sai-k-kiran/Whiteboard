@@ -9,9 +9,8 @@ public class DesignDTOMapper implements Function<Design, DesignDTO> {
     @Override
     public DesignDTO apply(Design design){
         return new DesignDTO(
-                design.getDesignId(),
-                design.getDesign(),
-                design.getUserId()
+                design.getDesign_Id(),
+                design.getDesign()
         );
     }
 }

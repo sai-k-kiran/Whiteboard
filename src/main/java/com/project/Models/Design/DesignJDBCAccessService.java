@@ -1,9 +1,18 @@
 package com.project.Models.Design;
 
 import com.project.Models.User.User;
+import com.project.Repository.DesignRepository;
+import com.project.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository("design-jdbc")
@@ -18,16 +27,16 @@ public class DesignJDBCAccessService implements DesignDAO{
 
     @Override
     public List<Design> selectDesignsOfUser(Integer id){
-        String sql = "SELECT design FROM designs WHERE userId = ?";
+        String sql = "SELECT design_id, design FROM designs WHERE user_id = " + id;
 
-        return jdbcTemplate.query(sql, rowMapper, id);
+        return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
     public void addDesign(Design request){
         String sql = "INSERT INTO designs(design, user_id) VALUES(?, ?)";
 
-        User user = request.getUserId();
+        User user = request.getUser_id();
         System.out.println(user.getId()+ " " + user.getName());
 
         jdbcTemplate.update(sql,
@@ -37,7 +46,7 @@ public class DesignJDBCAccessService implements DesignDAO{
 
     @Override
     public void deleteDesign(Integer design_id){
-        String sql = "DELETE FROM designs where designId = ?";
+        String sql = "DELETE FROM designs where design_id = ?";
 
         jdbcTemplate.update(sql, design_id);
     }

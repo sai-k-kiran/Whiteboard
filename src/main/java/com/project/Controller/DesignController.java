@@ -17,8 +17,8 @@ public class DesignController {
         this.designService = designService;
     }
 
-    @PostMapping
-    public List<DesignDTO> getAllDesigns(@RequestBody Integer id){
+    @GetMapping
+    public List<DesignDTO> getAllDesigns(@RequestParam("id") Integer id){
         return designService.getAllDesigns(id);
     }
 
@@ -27,8 +27,8 @@ public class DesignController {
         designService.addDesign(request);
     }
 
-    @DeleteMapping({"id"})
-    public void deleteDesign(@PathVariable("id") Integer id){
+    @DeleteMapping()
+    public void deleteDesign(@RequestParam("id") Integer id){
         designService.removeDesign(id);
     }
 }

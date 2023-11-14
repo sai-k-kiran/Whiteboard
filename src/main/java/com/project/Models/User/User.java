@@ -40,7 +40,7 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Design> designs;
 
     public User() {}
