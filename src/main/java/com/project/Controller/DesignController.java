@@ -3,7 +3,6 @@ package com.project.Controller;
 import com.project.Models.Design.DesignCreationRequest;
 import com.project.Models.Design.DesignDTO;
 import com.project.Models.Design.DesignServiceImpl;
-import com.project.Models.User.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
