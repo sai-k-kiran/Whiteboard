@@ -1,6 +1,7 @@
 package com.project.Models.User;
 
 import com.project.Models.Design.Design;
+import com.project.Models.Images.Images;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -43,7 +44,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Design> designs;
 
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Images> images;
+
     public User() {}
+
+    public User(Integer id) {
+        this.id = id;
+    }
 
     public User(String name, String email, String companyName, String phoneNum, String location, String password) {
         this.name = name;

@@ -1,7 +1,5 @@
 package com.project.Models.Design;
 
-import com.project.Exception.ResourceNotFound;
-import com.project.Models.User.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +34,4 @@ public class DesignServiceImpl implements DesignService{
     public void removeDesign(Integer id){
         designDAO.deleteDesign(id);
     }
-
-
 }

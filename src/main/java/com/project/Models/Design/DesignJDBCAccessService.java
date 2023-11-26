@@ -1,18 +1,9 @@
 package com.project.Models.Design;
 
 import com.project.Models.User.User;
-import com.project.Repository.DesignRepository;
-import com.project.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 @Repository("design-jdbc")
@@ -37,7 +28,6 @@ public class DesignJDBCAccessService implements DesignDAO{
         String sql = "INSERT INTO designs(design, user_id) VALUES(?, ?)";
 
         User user = request.getUser_id();
-        System.out.println(user.getId()+ " " + user.getName());
 
         jdbcTemplate.update(sql,
                 request.getDesign(),

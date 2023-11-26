@@ -2,7 +2,6 @@ package com.project.Models.Design;
 
 import com.project.Models.User.User;
 import jakarta.persistence.*;
-
 import java.util.Objects;
 
 
