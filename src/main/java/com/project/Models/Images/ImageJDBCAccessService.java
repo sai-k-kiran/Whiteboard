@@ -24,7 +24,6 @@ public class ImageJDBCAccessService implements ImageDAO{
     @Override
     public void addImage(Images image){
         String sql = "INSERT INTO images(image_url, user_id) VALUES(?, ?)";
-        System.out.println(image.getImageUrl() + "   " + image.getUser_id().getId());
 
         jdbcTemplate.update(sql, image.getImageUrl(), image.getUser_id().getId());
     }

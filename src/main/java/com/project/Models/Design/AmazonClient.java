@@ -53,8 +53,7 @@ public class AmazonClient {
         }
         return fileUrl;
     }
-    // "https://" + bucketName + "." + endpointUrl + "/" + fileName
-    // https://my-whiteboard-bucket.s3.ap-south-1.amazonaws.com/1700918130061-images.jpg
+
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);

@@ -1,5 +1,6 @@
 package com.project.Models.Design;
 
+import com.project.Models.User.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,8 @@ public class DesignServiceImpl implements DesignService{
 
     @Override
     public void addDesign(DesignCreationRequest request){
-        designDAO.addDesign(new Design(request.design(), request.user()));
+        User user = new User(request.user_id());
+        designDAO.addDesign(new Design(request.design(), user));
     }
 
     @Override
