@@ -1,5 +1,5 @@
 # Whiteboard Frontend
-This repository is for the frontend portion of my fullstack busines branding app "Whiteboard". The app automates the task of the creating, designing greeting cards, pamphlets, banners for various events for individuals, shops, businesses etc. The frontend of the application (Business branding Application) is created using Javascript & React. The necessary features for image editing/maipulation is integrated into the app using Fabric.js.
+This repository is for the backend portion of my fullstack busines branding app "Whiteboard". The app automates the task of the creating, designing greeting cards, pamphlets, banners for various events for individuals, shops, businesses etc. The backend of the application (Business branding Application) is created using Java & Spring Boot. The database is MySQl database.
 
 Some of the features of the app are:
   - Add elements(shapes, text, images) on the HTML canvas.
